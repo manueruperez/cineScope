@@ -1,0 +1,36 @@
+<div *ngIf="movie; else noMovieContent" class="container">
+  <div class="row movie-details">
+    <div class="col-md-8">
+      <h2>{{ movie.title }}</h2>
+      <section class="movie-details__treiler-section">
+        <app-video-player [videoUrl]="movie.trailerLink"></app-video-player>
+      </section>
+      <section>
+        <div class="row">
+          <div class="col-md-4">
+            <img
+              class="movie-details__image"
+              [src]="movie.imageUrl"
+              alt="{{ movie.title }}"
+            />
+          </div>
+          <div class="col-md-8">
+            <p>{{ movie.description }}</p>
+            <p><strong>Categorías:</strong> {{ movie.genre.join(", ") }}</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="col-md-4">
+      <h3>Películas Disponibles</h3>
+      <!-- <ul>
+        <li *ngFor="let availableMovie of availableMovies">
+          {{ availableMovie.title }}
+        </li>
+      </ul> -->
+    </div>
+  </div>
+</div>
+<ng-template #noMovieContent>
+  <p>No hay detalles de película disponibles.</p>
+</ng-template>
