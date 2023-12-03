@@ -10,14 +10,16 @@ import { Router } from '@angular/router';
 })
 export class MoviesHomeComponent implements OnInit {
   movies: Movie[] = [];
+  loading = true;
   constructor(
     private movieDataService: MovieDataService,
     private router: Router
   ) {}
   ngOnInit(): void {
-    this.movieDataService
-      .setMoviesList()
-      .then(() => (this.movies = this.movieDataService.getMoviesList()));
+    this.movieDataService.setMoviesList().then(() => {
+      this.movies = this.movieDataService.getMoviesList();
+      this.loading = false;
+    });
   }
   handleViewDetails(movieId: number) {
     this.router.navigate([`movies/details/${movieId}`]);

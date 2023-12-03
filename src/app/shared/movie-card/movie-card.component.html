@@ -6,6 +6,7 @@
   <img
     mat-card-image
     class="movie-card__image"
+    (click)="onViewDetails()"
     [src]="movie.imageUrl"
     alt="{{ movie.title }}"
   />
