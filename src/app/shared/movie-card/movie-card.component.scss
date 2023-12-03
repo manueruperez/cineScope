@@ -8,11 +8,13 @@
     text-overflow: ellipsis;
   }
   &__description {
+    margin-top: 20px;
+    height: 55px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
   &__image {
     width: 100%;
