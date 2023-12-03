@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Movie } from '../../models/movie.model';
 import { MovieDataService } from '../../shared/movie-data-state.service';
-import { Router } from '@angular/router';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-movies-details',
@@ -10,19 +10,26 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./movies-details.component.scss'],
 })
 export class MoviesDetailsComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   movie: Movie | null = null;
+
   constructor(
     private movieDataService: MovieDataService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
   ngOnInit() {
-    this.loadMovieDetails();
+    this.route.paramMap.pipe(takeUntil(this.destroy$)).subscribe((params) => {
+      const movieId = +params.get('id')!;
+      this.loadMovieDetails(movieId);
+    });
   }
   ngOnDestroy() {
-    this.movieDataService.clearCurrentMovie();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
-  private loadMovieDetails() {
-    const movie = this.movieDataService.getCurrentMovie();
+  private loadMovieDetails(movieId: number) {
+    const movie = this.movieDataService.getMovieById(movieId);
     if (!movie) {
       this.router.navigate(['/']);
       return;

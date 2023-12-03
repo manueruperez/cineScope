@@ -7,14 +7,14 @@
       </section>
       <section>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 col-sm-12">
             <img
               class="movie-details__image"
               [src]="movie.imageUrl"
               alt="{{ movie.title }}"
             />
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 col-sm-12">
             <p>{{ movie.description }}</p>
             <p><strong>Categorías:</strong> {{ movie.genre.join(", ") }}</p>
           </div>
@@ -22,15 +22,10 @@
       </section>
     </div>
     <div class="col-md-4">
-      <h3>Películas Disponibles</h3>
-      <!-- <ul>
-        <li *ngFor="let availableMovie of availableMovies">
-          {{ availableMovie.title }}
-        </li>
-      </ul> -->
+      <app-top-movies-list></app-top-movies-list>
     </div>
   </div>
 </div>
 <ng-template #noMovieContent>
-  <p>No hay detalles de película disponibles.</p>
+  <p>To do</p>
 </ng-template>

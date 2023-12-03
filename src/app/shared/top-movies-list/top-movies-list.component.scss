@@ -1,0 +1,32 @@
+.movie-title {
+  display: flex;
+  align-items: center;
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-movies-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.top-movies-list .chip {
+  width: 70px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: none !important;
+  transition: none !important;
+  margin-right: 10px;
+  background-color: #e0e0e0;
+  border-radius: 17px;
+}

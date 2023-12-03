@@ -20,10 +20,7 @@ export class MoviesHomeComponent implements OnInit {
       .then(() => (this.movies = this.movieDataService.getMoviesList()));
   }
   handleViewDetails(movieId: number) {
-    this.movieDataService.setCurrentMovie(
-      this.movies.filter((movie: { id: number }) => movie.id == movieId)[0]
-    );
-    this.router.navigate(['movies/details']);
+    this.router.navigate([`movies/details/${movieId}`]);
   }
   handleAddToWatchlist(movieId: number) {}
 }

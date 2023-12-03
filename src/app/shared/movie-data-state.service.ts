@@ -6,19 +6,12 @@ import { MoviesService } from './movies.service';
   providedIn: 'root',
 })
 export class MovieDataService {
-  private currentMovie: Movie | null = null;
   private moviesList: Movie[] = [];
 
   constructor(private moviesService: MoviesService) {}
 
-  setCurrentMovie(movie: Movie) {
-    this.currentMovie = movie;
-  }
-  getCurrentMovie(): Movie | null {
-    return this.currentMovie;
-  }
-  clearCurrentMovie() {
-    this.currentMovie = null;
+  getMovieById(movieId: number): Movie | null {
+    return this.moviesList.find((movie) => movie.id === movieId) ?? null;
   }
 
   async setMoviesList(): Promise<void> {
@@ -32,5 +25,12 @@ export class MovieDataService {
 
   getMoviesList(): Movie[] {
     return this.moviesList;
+  }
+
+  getTopMoviesList(): Movie[] {
+    return this.getMoviesList()
+      .slice()
+      .sort((a, b) => b.rating - a.rating)
+      .slice(0, 5);
   }
 }
