@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../models/movie.model';
 import { MovieDataService } from '../../shared/movie-data-state.service';
 import { Router } from '@angular/router';
+import { WatchlistService } from '../../shared/watchlist.service';
 
 @Component({
   selector: 'app-movies-home',
@@ -13,6 +14,7 @@ export class MoviesHomeComponent implements OnInit {
   filteredMovies: Movie[] = [];
   loading = true;
   constructor(
+    private watchlistService: WatchlistService,
     private movieDataService: MovieDataService,
     private router: Router
   ) {}
@@ -46,5 +48,11 @@ export class MoviesHomeComponent implements OnInit {
   handleViewDetails(movieId: number) {
     this.router.navigate([`movies/details/${movieId}`]);
   }
-  handleAddToWatchlist(movieId: number) {}
+  handleAddToWatchlist(movie: Movie) {
+    this.watchlistService.addToWatchList(movie);
+  }
+
+  handleremoveToWatchlist(movieId: number) {
+    this.watchlistService.removeFromWatchList(movieId);
+  }
 }

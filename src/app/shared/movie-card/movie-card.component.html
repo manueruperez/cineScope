@@ -3,6 +3,7 @@
     <mat-card-title class="movie-card__title">{{ movie.title }}</mat-card-title>
     <mat-card-subtitle>{{ movie.releasedDate | date }}</mat-card-subtitle>
   </mat-card-header>
+  <span *ngIf="isInWatchList" class="on-watchilst-movie">On Watchlist</span>
   <img
     mat-card-image
     class="movie-card__image"
@@ -14,7 +15,26 @@
     <p class="movie-card__description">{{ movie.description }}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="onViewDetails()">View details</button>
-    <button mat-button (click)="onAddToWatchlist()">add</button>
+    <button color="primary" mat-flat-button (click)="onViewDetails()">
+      View details
+    </button>
+    <button
+      *ngIf="!isInWatchList"
+      color="primary"
+      mat-button
+      (click)="onAddToWatchlist()"
+      matTooltip="Add to watchlist"
+    >
+      <mat-icon>add_circle_outline</mat-icon>
+    </button>
+    <button
+      *ngIf="isInWatchList"
+      color="warn"
+      mat-button
+      (click)="onRemoveToWatchlist()"
+      matTooltip="Remove to watchlist"
+    >
+      <mat-icon>remove_circle_outline</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>
