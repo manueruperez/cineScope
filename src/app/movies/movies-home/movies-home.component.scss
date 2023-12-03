@@ -6,17 +6,26 @@
 }
 
 mat-form-field {
-  width: 100%; /* Asegura que la barra de búsqueda ocupe todo el ancho de su contenedor */
+  width: 100%;
 }
 
 .sort-buttons-container {
   display: flex;
-  justify-content: center; /* Centra horizontalmente los botones */
-  align-items: center; /* Centra verticalmente los botones */
+  justify-content: center;
+  align-items: center;
 }
 
 .sort-buttons-wrapper {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+}
+
+.no-movies-list-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
 }
