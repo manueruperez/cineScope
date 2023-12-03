@@ -4,3 +4,19 @@
   align-items: center;
   height: 100vh;
 }
+
+mat-form-field {
+  width: 100%; /* Asegura que la barra de búsqueda ocupe todo el ancho de su contenedor */
+}
+
+.sort-buttons-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente los botones */
+  align-items: center; /* Centra verticalmente los botones */
+}
+
+.sort-buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}

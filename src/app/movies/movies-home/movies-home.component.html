@@ -4,18 +4,26 @@
 
 <ng-template #content>
   <div class="search-and-sort">
-    <mat-form-field appearance="fill">
-      <mat-label>Buscar</mat-label>
-      <input matInput (keyup)="applyFilter($event)" />
-    </mat-form-field>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Search</mat-label>
+          <input matInput (keyup)="applyFilter($event)" />
+        </mat-form-field>
+      </div>
+    </div>
 
-    <mat-button-toggle-group
-      #group="matButtonToggleGroup"
-      (change)="sortMovies(group.value)"
-    >
-      <mat-button-toggle value="title">Título</mat-button-toggle>
-      <mat-button-toggle value="date">Fecha</mat-button-toggle>
-    </mat-button-toggle-group>
+    <div class="row justify-content-center mt-2">
+      <div class="col-md-6 sort-buttons-wrapper">
+        <mat-button-toggle-group
+          #group="matButtonToggleGroup"
+          (change)="sortMovies(group.value)"
+        >
+          <mat-button-toggle value="title">Title</mat-button-toggle>
+          <mat-button-toggle value="date">Date</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-4" *ngFor="let movie of filteredMovies">
