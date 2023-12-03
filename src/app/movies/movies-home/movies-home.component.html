@@ -3,8 +3,22 @@
 </div>
 
 <ng-template #content>
+  <div class="search-and-sort">
+    <mat-form-field appearance="fill">
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup)="applyFilter($event)" />
+    </mat-form-field>
+
+    <mat-button-toggle-group
+      #group="matButtonToggleGroup"
+      (change)="sortMovies(group.value)"
+    >
+      <mat-button-toggle value="title">Título</mat-button-toggle>
+      <mat-button-toggle value="date">Fecha</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
   <div class="row">
-    <div class="col-md-4" *ngFor="let movie of movies">
+    <div class="col-md-4" *ngFor="let movie of filteredMovies">
       <app-movie-card
         [movie]="movie"
         (viewDetails)="handleViewDetails($event)"
