@@ -4,10 +4,21 @@
     width: auto;
     max-width: 100%;
     display: block;
-    margin: 0 auto 20px;
   }
 
   &__treiler-section {
     margin-bottom: 20px;
   }
+}
+
+.on-watchilst-movie {
+  background-color: #ffd740;
+  text-align: center;
+  z-index: 1;
+  border: solid grey 1px;
+  margin-bottom: -41px;
+}
+
+.details-container {
+  margin-top: 58px;
 }

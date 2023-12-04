@@ -6,7 +6,8 @@
         <app-video-player [videoUrl]="movie.trailerLink"></app-video-player>
       </section>
       <section>
-        <div class="row">
+        <p *ngIf="isInWatchList" class="on-watchilst-movie">On Watchlist</p>
+        <div class="row details-container">
           <div class="col-md-4 col-sm-12">
             <img
               class="movie-details__image"
@@ -15,8 +16,29 @@
             />
           </div>
           <div class="col-md-8 col-sm-12">
-            <p>{{ movie.description }}</p>
-            <p><strong>Categorías:</strong> {{ movie.genre.join(", ") }}</p>
+            <p><strong>Rating:</strong> ⭐ {{ movie.rating }}</p>
+            <p><strong>Genre:</strong> {{ movie.genre.join(", ") }}</p>
+            <p><strong>Duration:</strong> {{ movie.duration }}</p>
+            <p><strong>Released:</strong> {{ movie.releasedDate }}</p>
+            <p><strong>Description:</strong>{{ movie.description }}</p>
+            <button
+              *ngIf="!isInWatchList"
+              color="primary"
+              mat-button
+              (click)="onAddToWatchlist()"
+              matTooltip="Add to watchlist"
+            >
+              <mat-icon>add_circle_outline</mat-icon>
+            </button>
+            <button
+              *ngIf="isInWatchList"
+              color="warn"
+              mat-button
+              (click)="onRemoveToWatchlist()"
+              matTooltip="Remove to watchlist"
+            >
+              <mat-icon>remove_circle_outline</mat-icon>
+            </button>
           </div>
         </div>
       </section>
