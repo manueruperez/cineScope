@@ -31,7 +31,13 @@ export class MoviesDetailsComponent implements OnInit, OnDestroy {
       const movieId = +idParam;
       this.loadMovieDetails(movieId);
     });
+  }
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
+  subscribeTowatchList() {
     this.watchlistService.watchList$
       .pipe(takeUntil(this.destroy$))
       .subscribe((watchList) => {
@@ -39,10 +45,6 @@ export class MoviesDetailsComponent implements OnInit, OnDestroy {
           this.isInWatchList = watchList.some((m) => m.id === this.movie!.id);
         }
       });
-  }
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   onAddToWatchlist() {
@@ -64,6 +66,7 @@ export class MoviesDetailsComponent implements OnInit, OnDestroy {
         return;
       }
       this.movie = movie;
+      this.subscribeTowatchList();
     });
   }
 }
