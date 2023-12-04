@@ -32,8 +32,8 @@ export class TopMoviesListComponent {
     if (currentRoute.includes('details') && currentMovieId !== movieId) {
       const newMovie = this.topMoviesList.find((movie) => movie.id === movieId);
       if (newMovie) {
-        window.location.href = `movies/details/${movieId}`;
-        // this.router.navigate([`movies/details/${movieId}`]);
+        // window.location.href = `movies/details/${movieId}`;
+        this.router.navigate([`movies/details/${movieId}`]);
       }
     }
   }
