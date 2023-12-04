@@ -1,15 +1,14 @@
 <h3>Top Movies</h3>
 <ul>
-  <a
-    [routerLink]="['/movies/details', topMovie.id]"
+  <li
+    class="top-movies-list row"
     *ngFor="let topMovie of topMoviesList"
+    (click)="onSelectMovie(topMovie.id)"
   >
-    <li class="top-movies-list row">
-      <div class="chip" disableRipple="true">
-        ⭐
-        {{ topMovie.rating }}
-      </div>
-      <span class="movie-title">{{ topMovie.title }}</span>
-    </li>
-  </a>
+    <div class="chip" disableRipple="true">
+      ⭐
+      {{ topMovie.rating }}
+    </div>
+    <span class="movie-title">{{ topMovie.title }}</span>
+  </li>
 </ul>
