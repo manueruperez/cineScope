@@ -23,7 +23,12 @@ export class MoviesDetailsComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit() {
     this.route.paramMap.pipe(takeUntil(this.destroy$)).subscribe((params) => {
-      const movieId = +params.get('id')!;
+      const idParam = params.get('id');
+      if (!idParam || isNaN(+idParam)) {
+        this.router.navigate(['/']);
+        return;
+      }
+      const movieId = +idParam;
       this.loadMovieDetails(movieId);
     });
 
@@ -52,11 +57,13 @@ export class MoviesDetailsComponent implements OnInit, OnDestroy {
     }
   }
   private loadMovieDetails(movieId: number) {
-    const movie = this.movieDataService.getMovieById(movieId);
-    if (!movie) {
-      this.router.navigate(['/']);
-      return;
-    }
-    this.movie = movie;
+    this.movieDataService.setMoviesList().then(() => {
+      const movie = this.movieDataService.getMovieById(movieId);
+      if (!movie) {
+        this.router.navigate(['/']);
+        return;
+      }
+      this.movie = movie;
+    });
   }
 }

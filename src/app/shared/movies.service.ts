@@ -9,9 +9,7 @@ export class MoviesService {
   constructor() {}
   getMovies(): Promise<Movie[]> {
     return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(MOVIES);
-      }, 1000);
+      resolve(MOVIES);
     });
   }
 }
