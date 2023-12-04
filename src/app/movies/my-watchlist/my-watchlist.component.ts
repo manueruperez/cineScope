@@ -20,7 +20,7 @@ export class MyWatchlistComponent {
     });
   }
   goToMovieDetails(id: number) {
-    window.location.href = `movies/details/${id}`;
+    window.location.href = `/#/movies/details/${id}`;
     // this.router.navigate([`movies/details/${id}`]);
   }
   removeFromWatchlist(id: number) {
