@@ -1,3 +1,16 @@
-<mat-toolbar color="primary">
-  <span class="logo" (click)="goTo('/')">CineScope</span>
+<mat-toolbar color="primary" class="justify-content-between">
+  <span class="logo float-left" (click)="goTo('/')">CineScope</span>
+  <button
+    class="float-right"
+    color="accent"
+    mat-mini-fab
+    [matMenuTriggerFor]="menu"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['/movies/my-watchlist']">
+      My watchlist
+    </button>
+  </mat-menu>
 </mat-toolbar>

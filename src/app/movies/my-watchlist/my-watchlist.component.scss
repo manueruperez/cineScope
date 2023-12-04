@@ -1,0 +1,38 @@
+mat-list {
+  width: 100%;
+  display: block; // Cambiado para asegurar un layout de bloque
+
+  .watchlist-item {
+    display: flex;
+    align-items: center; // Alinea el botón y el título verticalmente
+    justify-content: center; // Centra el contenido
+    width: 100%; // Ocupa el ancho completo
+
+    &:not(:last-child) {
+      margin-bottom: 10px; // Espacio entre elementos de la lista
+    }
+  }
+
+  .item-content {
+    display: flex;
+    width: 90%; // Ajusta según sea necesario
+    align-items: center;
+  }
+
+  .movie-title {
+    flex-grow: 1;
+    margin-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+}
+
+.no-shadow {
+  box-shadow: none !important;
+}
+
+.title {
+  text-align: center;
+}

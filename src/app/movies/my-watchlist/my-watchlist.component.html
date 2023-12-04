@@ -1,0 +1,24 @@
+<h1 class="title">Your watchlist</h1>
+
+<div *ngIf="watchlistMovies.length === 0; else showList">
+  <p class="title">No movies yet 😥</p>
+</div>
+<ng-template #showList>
+  <mat-list>
+    <mat-list-item *ngFor="let movie of watchlistMovies" class="watchlist-item">
+      <div class="item-content">
+        <button
+          class="no-shadow"
+          mat-mini-fab
+          (click)="removeFromWatchlist(movie.id)"
+          aria-label="Remove from watchlist"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <div class="movie-title" (click)="goToMovieDetails(movie.id)">
+          {{ movie.title }}
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</ng-template>

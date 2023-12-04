@@ -8,6 +8,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [],
@@ -21,6 +23,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatProgressSpinnerModule,
     MatButtonToggleModule,
     MatTooltipModule,
+    MatMenuModule,
+    MatListModule,
   ],
   exports: [
     MatToolbarModule,
@@ -32,6 +36,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatProgressSpinnerModule,
     MatButtonToggleModule,
     MatTooltipModule,
+    MatMenuModule,
+    MatListModule,
   ],
 })
 export class MaterialModule {}
